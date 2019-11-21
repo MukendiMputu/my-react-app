@@ -1,15 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import NameComponent from './components/NameComponent';
 
+class App extends React.Component {
 
-  return (
-    <div>
+  componentDidMount() {
+    console.log('mounted')
+  }
 
-    </div>
-  );
+  render() {
+    var word = 'Hello';
+    var style = {fontSize: '20px'};
+
+    return (
+      <div>
+        <p style={style} className="text-large">
+          Hi! My name is <NameComponent />
+        </p>
+        <div>{word}</div>
+      </div>
+    );
+
+  }
 }
 
 export default App;
