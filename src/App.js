@@ -8,16 +8,34 @@ class App extends React.Component {
     console.log('mounted')
   }
 
+  changeColor() {
+    NameComponent.style={fontColor: 'green'};
+  }
+
   render() {
-    var word = 'Hello';
+    var greeting = ['Hello '];
     var style = {fontSize: '20px'};
+    var array = ["Salut ", "Hola ", "Ciao "];
+    
+
+    array.forEach(
+      function(word, i){
+        greeting.push(
+          <span key={i}>{i} {word}</span>
+        )
+      }
+    )
 
     return (
       <div>
         <p style={style} className="text-large">
-          Hi! My name is <NameComponent />
+          {greeting}, my name is <NameComponent />!
         </p>
-        <div>{word}</div>
+
+        <button onClick={this.changeColor/* () => {console.log('Boomm!')} */}> 
+          Press!
+        </button>
+
       </div>
     );
 

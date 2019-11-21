@@ -7,13 +7,11 @@ class NameComponent extends React.Component {
   }
 
   render() {
-    var word = 'Hello';
-    var style = {fontSize: '20px'};
 
     return (
-      <div>
-        <p>Mukendi Mputu</p>
-      </div>
+      
+        <span>Mukendi Mputu</span>
+      
     );
 
   }
