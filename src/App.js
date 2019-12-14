@@ -16,7 +16,7 @@ class App extends React.Component {
     var greeting = ['Hello '];
     var style = {fontSize: '20px'};
     var array = ["Salut ", "Hola ", "Ciao "];
-    
+
 
     array.forEach(
       function(word, i){
@@ -32,7 +32,7 @@ class App extends React.Component {
           {greeting}, my name is <NameComponent />!
         </p>
 
-        <button onClick={this.changeColor/* () => {console.log('Boomm!')} */}> 
+        <button onClick={this.changeColor/* () => {console.log('Boomm!')} */}>
           Press!
         </button>
 
