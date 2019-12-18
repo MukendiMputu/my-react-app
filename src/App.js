@@ -4,6 +4,7 @@ import NameComponent from './components/NameComponent';
 
 class App extends React.Component {
 
+  // declaring component
   componentDidMount() {
     console.log('mounted')
   }
@@ -21,7 +22,7 @@ class App extends React.Component {
     array.forEach(
       function(word, i){
         greeting.push(
-          <span key={i}>{i} {word}</span>
+          <span key={i}> {word}</span>
         )
       }
     )
