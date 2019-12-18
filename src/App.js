@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import NameComponent from './components/NameComponent';
 
@@ -12,12 +12,13 @@ class App extends React.Component {
       i: 0
     }
   }
+
   // good practice to initialize data/variable
   componentDidMount() {
     console.log('mounted')
   }
   //
-  componentDidUpdate(){
+  componentDidUpdate( ){
 
   }
 
@@ -34,14 +35,14 @@ class App extends React.Component {
 
     return (
       <div>
-        <p style={style} className="text-large">
+{/*         <p style={style} className="text-large">
           {this.state.array[this.state.i]}, {this.state.intro[this.state.i]} <NameComponent />!
         </p>
 
         <button className="btn-success" onClick={this.changeGreeting.bind(this)}>
           {this.state.btnLabel[this.state.i]}
         </button>
-
+ */}
       </div>
     );
 
