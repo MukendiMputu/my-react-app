@@ -3,37 +3,33 @@ import React from 'react';
 import NameComponent from './components/NameComponent';
 
 class App extends React.Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      array: ["Hello ", "Salut ", "Hola ", "Ciao "],
+      i: 0
+    }
+  }
   // declaring component
   componentDidMount() {
     console.log('mounted')
   }
 
-  changeColor() {
-    NameComponent.style={fontColor: 'green'};
+  changeGreeting() {
+    this.setState({
+      i: (+ 1)
+    });
   }
 
   render() {
-    var greeting = ['Hello '];
-    var style = {fontSize: '20px'};
-    var array = ["Salut ", "Hola ", "Ciao "];
-
-
-    array.forEach(
-      function(word, i){
-        greeting.push(
-          <span key={i}> {word}</span>
-        )
-      }
-    )
 
     return (
       <div>
-        <p style={style} className="text-large">
-          {greeting}, my name is <NameComponent />!
+        <p  className="text-large">
+          {this.state.array[this.state.i]}, my name is <NameComponent />!
         </p>
 
-        <button onClick={this.changeColor/* () => {console.log('Boomm!')} */}>
+        <button onClick={this.changeGreeting.bind(this)}>
           Press!
         </button>
 
