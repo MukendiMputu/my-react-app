@@ -6,23 +6,27 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      array: ["Hello ", "Salut ", "Hola ", "Ciao "],
+      array: ["Hello", "Salut", "Hola", "Ciao"],
       intro: ["my name is ", "je m'appelle ", "me llamo ", "mi chiamo "],
+      btnLabel: ["Press me!", "Presse-moi!", "Haz click!", "Clicca mi!"],
       i: 0
     }
   }
-  // declaring component
+  // good practice to initialize data/variable
   componentDidMount() {
     console.log('mounted')
+  }
+  //
+  componentDidUpdate(){
+
   }
 
   // changes between the array elements
   changeGreeting() {
-    if(this.state.i < 3){
-      this.setState({
-          i: (this.state.i + 1)%3
-        });
-    }
+    this.setState({
+        i: (this.state.i + 1)%4
+      });
+
   }
 
   render() {
@@ -34,8 +38,8 @@ class App extends React.Component {
           {this.state.array[this.state.i]}, {this.state.intro[this.state.i]} <NameComponent />!
         </p>
 
-        <button onClick={this.changeGreeting.bind(this)}>
-          Press!
+        <button className="btn-success" onClick={this.changeGreeting.bind(this)}>
+          {this.state.btnLabel[this.state.i]}
         </button>
 
       </div>
