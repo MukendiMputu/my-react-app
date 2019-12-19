@@ -5,7 +5,10 @@ import {Nav, Navbar, Form, FormControl, Button,
         Container, Row, Col, Carousel, Image, Table
         } from 'react-bootstrap'
 import Select from 'react-select'
-import NameComponent from './components/NameComponent';
+import NameComponent from './NameComponent';
+
+
+
 
 class App extends React.Component {
   constructor(props){
@@ -22,9 +25,8 @@ class App extends React.Component {
 
   // good practice to initialize data/variable
   componentDidMount() {
-    fetch('http://www.json-generator.com/api/json/get/cjqOJstqzS?indent=2', {
-      method: 'GET'
-    })
+
+    fetch('http://www.json-generator.com/api/json/get/cjqOJstqzS?indent=2', {method: 'GET'})
     .then(response => response.json())
     .then(json => {
       console.log(json)
@@ -35,10 +37,6 @@ class App extends React.Component {
     .catch(error => {
       console.log(error)
     });
-  }
-  //
-  componentDidUpdate( ){
-
   }
 
   // changes between the array elements
@@ -58,7 +56,6 @@ class App extends React.Component {
 
   render() {
 
-    //const style = {fontSize: '36pt'};
     const selectList = this.state.JsonList.map( item => {
       return {value: item.name, label: item.name}
     });
