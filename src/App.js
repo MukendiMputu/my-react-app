@@ -2,8 +2,9 @@ import React from 'react';
 //import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import {Nav, Navbar, Form, FormControl, Button,
-        Container, Row, Col, Carousel, Image
+        Container, Row, Col, Carousel, Image, Table
         } from 'react-bootstrap'
+import Select from 'react-select'
 import NameComponent from './components/NameComponent';
 
 class App extends React.Component {
@@ -13,16 +14,27 @@ class App extends React.Component {
       array: ["Hello", "Salut", "Hola", "Ciao"],
       intro: ["my name is ", "je m'appelle ", "me llamo ", "mi chiamo "],
       btnLabel: ["Press me!", "Presse-moi!", "Haz click!", "Clicca mi!"],
-      i: 0
+      i: 0,
+      selectedOption: '',
+      JsonList: []
     }
   }
 
   // good practice to initialize data/variable
   componentDidMount() {
-    fetch()
+    fetch('http://www.json-generator.com/api/json/get/cjqOJstqzS?indent=2', {
+      method: 'GET'
+    })
     .then(response => response.json())
-    .then(json => {})
-    .catch(error => {});
+    .then(json => {
+      console.log(json)
+      this.setState({
+        JsonList : json
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    });
   }
   //
   componentDidUpdate( ){
@@ -37,40 +49,22 @@ class App extends React.Component {
 
   }
 
+  // defines behavior of the select box
+  handleChange(selectedOption) {
+    this.setState({
+      selectedOption : selectedOption ? selectedOption : ''
+    });
+  }
+
   render() {
+
     //const style = {fontSize: '36pt'};
+    const selectList = this.state.JsonList.map( item => {
+      return {value: item.name, label: item.name}
+    });
 
     return (
-      <div >
-        {/*<p style={style} className="text-large">
-          {this.state.array[this.state.i]}, {this.state.intro[this.state.i]} <NameComponent />!
-        </p>
-
-        <button className="btn-success" onClick={this.changeGreeting.bind(this)}>
-          {this.state.btnLabel[this.state.i]}
-        </button>*/}
-
-        {/*<Form className="text-center">
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form> */}
-
+      <div className="">
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="mr-auto">
@@ -129,28 +123,70 @@ class App extends React.Component {
               <h3>First column</h3>
               <p>This is a simple hero unit, a simple jumbotron-style component for calling
               extra attention to featured content or information.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a className="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </Col>
             <Col xs={6} md={4}>
               {/* <Image src="holder.js/171x180" roundedCircle /> */}
               <h3>Second column</h3>
               <p>This is a simple hero unit, a simple jumbotron-style component for calling
               extra attention to featured content or information.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a className="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </Col>
             <Col xs={6} md={4}>
               {/* <Image src="holder.js/171x180" thumbnail /> */}
               <h3>Third column</h3>
               <p>This is a simple hero unit, a simple jumbotron-style component for calling
               extra attention to featured content or information.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a className="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </Col>
           </Row>
         </Container>
         <hr/>
+        <div className="container">
+          <div className="col-sm-12">
+            <div className="col-sm-6">
+              <h4 className="text-left">Using Ajax on Json and some filter function</h4>
+              <br/>
+              <Select
+                name="form-field-name"
+                value={this.state.selectedOption.value}
+                onChange={this.handleChange.bind(this)}
+                options={selectList}
+              />
+            </div>
+            <br/>
+            <div className="col-sm-12">
+              <Table striped bordered hover size="sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Company</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.JsonList.map(item => {
+                    if(this.state.selectedOption === '' || this.state.selectedOption.value === item.name){
+                      return (
+                        <tr key={item.id} >
+                          <td>{item.name}</td>
+                          <td>{item.address}</td>
+                          <td>{item.company}</td>
+                          <td>{item.balance}</td>
+                        </tr>
+                      )
+                    }
+                  })}
+                </tbody>
+              </Table>
+            </div>
+          </div>
+        </div>
+        <hr/>
         <div className="footer mt-auto py-3">
-          <div class="container">
-            <span class="text-muted">&copy;{new Date().getFullYear()} - <NameComponent/></span>
+          <div className="container">
+            <span className="text-muted">&copy;{new Date().getFullYear()} - <NameComponent/></span>
           </div>
         </div>
       </div>
