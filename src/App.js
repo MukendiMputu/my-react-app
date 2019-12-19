@@ -1,8 +1,9 @@
 import React from 'react';
 //import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from 'react-bootstrap/Button';
-import {Nav, Navbar, Form, FormControl} from 'react-bootstrap'
+import {Nav, Navbar, Form, FormControl, Button,
+        Container, Row, Col, Carousel, Image
+        } from 'react-bootstrap'
 import NameComponent from './components/NameComponent';
 
 class App extends React.Component {
@@ -89,6 +90,59 @@ class App extends React.Component {
           {this.state.btnLabel[this.state.i]}</Button>
         </p>
       </Jumbotron>
+      <Carousel>
+        <Carousel.Item>
+          <Image src="/firstSlide.png" alt="First slide"/>
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <Image src="/secondSlide.png" alt="Second slide"/>
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <Image src="/thirdSlide.png" alt="Third slide"/>
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+      </Carousel>
+      <br/>
+      <br/>
+      <Container>
+        <Row className=" justify-content-md-start">
+          <Col xs={6} md={4}>
+            {/* <Image src="holder.js/171x180" rounded /> */}
+            <h3>First column</h3>
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </Col>
+          <Col xs={6} md={4}>
+            {/* <Image src="holder.js/171x180" roundedCircle /> */}
+            <h3>Second column</h3>
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </Col>
+          <Col xs={6} md={4}>
+            {/* <Image src="holder.js/171x180" thumbnail /> */}
+            <h3>Third column</h3>
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </Col>
+        </Row>
+      </Container>
       </div>
     );
 
