@@ -3,9 +3,12 @@ import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import {Nav, Navbar, Form, FormControl, Button,
         Container, Row, Col, Carousel, Image, Table
-        } from 'react-bootstrap'
-import Select from 'react-select'
+        } from 'react-bootstrap';
+import Select from 'react-select';
 import NameComponent from './NameComponent';
+import 'react-select/dist/react-select.cjs';
+import { fetchInfo } from '../actions/actions_info';
+import { connect } from 'redux';
 
 
 
@@ -191,5 +194,6 @@ class App extends React.Component {
 
   }
 }
+//import { formatGroupLabel } from 'react-select/src/builtins';
 
 export default App;
