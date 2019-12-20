@@ -1,5 +1,4 @@
 import React from 'react';
-//import Form from 'react-bootstrap/Form';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import {Nav, Navbar, Form, FormControl, Button,
         Container, Row, Col, Carousel, Image, Table
@@ -7,13 +6,13 @@ import {Nav, Navbar, Form, FormControl, Button,
 import Select from 'react-select';
 import NameComponent from './NameComponent';
 import 'react-select/dist/react-select.cjs';
-import { fetchInfo, fetchtInfo } from '../actions/actions_info';
-import { connect } from 'redux';
+import { fetchtInfo } from '../actions/actions_info';
+import { connect } from 'react-redux';
 
 
 
 
-class App extends React.Component {
+class AppComponent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -29,7 +28,7 @@ class App extends React.Component {
   // good practice to initialize data/variable
   componentDidMount() {
 
-    fetchtInfo();
+    this.props.dispatch(fetchtInfo());
   }
 
   // changes between the array elements
@@ -184,6 +183,6 @@ class App extends React.Component {
 
   }
 }
-//import { formatGroupLabel } from 'react-select/src/builtins';
+const App = connect()(AppComponent);
 
 export default App;

@@ -8,7 +8,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-let store = createStore();
+let store = createStore(
+    rootReducer,
+    applyMiddleware(thunk)
+);
 
 render(
     <Provider store={store}>
