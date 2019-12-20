@@ -7,7 +7,7 @@ import {Nav, Navbar, Form, FormControl, Button,
 import Select from 'react-select';
 import NameComponent from './NameComponent';
 import 'react-select/dist/react-select.cjs';
-import { fetchInfo } from '../actions/actions_info';
+import { fetchInfo, fetchtInfo } from '../actions/actions_info';
 import { connect } from 'redux';
 
 
@@ -29,17 +29,7 @@ class App extends React.Component {
   // good practice to initialize data/variable
   componentDidMount() {
 
-    fetch('http://www.json-generator.com/api/json/get/cjqOJstqzS?indent=2', {method: 'GET'})
-    .then(response => response.json())
-    .then(json => {
-      console.log(json)
-      this.setState({
-        JsonList : json
-      })
-    })
-    .catch(error => {
-      console.log(error)
-    });
+    fetchtInfo();
   }
 
   // changes between the array elements
