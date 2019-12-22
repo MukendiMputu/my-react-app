@@ -27,7 +27,7 @@ class AppComponent extends React.Component {
 
   // good practice to initialize data/variable
   componentDidMount() {
-
+    // the dispatcher alerts store and reducers about the action 'fetchInfo'
     this.props.dispatch(fetchtInfo());
   }
 
@@ -47,7 +47,7 @@ class AppComponent extends React.Component {
   }
 
   render() {
-
+    console.log(this.props);
     const selectList = this.state.JsonList.map( item => {
       return {value: item.name, label: item.name}
     });
@@ -183,6 +183,11 @@ class AppComponent extends React.Component {
 
   }
 }
-const App = connect()(AppComponent);
+
+const mapStateToProps = state => {
+  return state;
+}
+
+const App = connect(mapStateToProps)(AppComponent);
 
 export default App;
