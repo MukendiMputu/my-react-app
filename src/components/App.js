@@ -47,8 +47,8 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    const selectList = this.state.JsonList.map( item => {
+    //console.log(this.props);
+    const selectList = this.props .info.map( item => {
       return {value: item.name, label: item.name}
     });
 
@@ -155,7 +155,7 @@ class AppComponent extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.JsonList.map(item => {
+                  {this.props.info.map(item => {
                     if(this.state.selectedOption === '' || this.state.selectedOption.value === item.name){
                       return (
                         <tr key={item.id} >
