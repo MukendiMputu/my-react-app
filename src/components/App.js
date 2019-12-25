@@ -5,7 +5,6 @@ import {Nav, Navbar, Form, FormControl, Button,
         } from 'react-bootstrap';
 import Select from 'react-select';
 import NameComponent from './NameComponent';
-import 'react-select/dist/react-select.cjs';
 import { fetchtInfo } from '../actions/actions_info';
 import { connect } from 'react-redux';
 
@@ -48,7 +47,7 @@ class AppComponent extends React.Component {
 
   render() {
     //console.log(this.props);
-    const selectList = this.props .info.map( item => {
+    const selectList = this.props.info.map( item => {
       return {value: item.name, label: item.name}
     });
 
@@ -137,7 +136,14 @@ class AppComponent extends React.Component {
               <h4 className="text-left">Using Ajax on Json and some filter function</h4>
               <br/>
               <Select
+                className="basic-single"
+                classNamePrefix="select"
                 name="form-field-name"
+                isDisabled={false}
+                isLoading={false}
+                isClearable={false}
+                isRtl={false}
+                isSearchable={false}
                 value={this.state.selectedOption.value}
                 onChange={this.handleChange.bind(this)}
                 options={selectList}
@@ -158,7 +164,7 @@ class AppComponent extends React.Component {
                   {this.props.info.map(item => {
                     if(this.state.selectedOption === '' || this.state.selectedOption.value === item.name){
                       return (
-                        <tr key={item.id} >
+                        <tr key={"item-"+item.name} >
                           <td>{item.name}</td>
                           <td>{item.address}</td>
                           <td>{item.company}</td>
