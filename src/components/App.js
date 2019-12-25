@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 
 
-class AppComponent extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -189,11 +189,5 @@ class AppComponent extends React.Component {
 
   }
 }
-
-const mapStateToProps = state => {
-  return state;
-}
-
-const App = connect(mapStateToProps)(AppComponent);
 
 export default App;
