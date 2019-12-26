@@ -20,7 +20,8 @@ class App extends React.Component {
       btnLabel: ["Press me!", "Presse-moi!", "Haz click!", "Clicca mi!"],
       i: 0,
       selectedOption: '',
-      JsonList: []
+      JsonList: [],
+      activePage: 'Home'
     }
   }
 
