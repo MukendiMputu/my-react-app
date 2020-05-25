@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 
@@ -13,7 +13,7 @@ let store = createStore(
     applyMiddleware(thunk)
 );
 
-render(
+ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
